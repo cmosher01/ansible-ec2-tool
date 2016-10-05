@@ -10,6 +10,8 @@
       command: java -fullversion
       become: true
       become_user: jenkins
+      changed_when: false
+      always_run: true
       register: java_version_cmd
     - name: dump java version command output
       debug:
