@@ -1,0 +1,19 @@
+---
+- name: get java version
+  command: java -fullversion
+  become: true
+  become_user: jenkins
+  changed_when: false
+  always_run: true
+  register: java_version_cmd
+- name: dump java version command output
+  debug:
+    var: java_version_cmd.stderr
+
+- set_fact:
+    java_version: "{{ java_version_cmd.stderr | regex_replace('.*\"(.*)\".*', '\\1') }}"
+
+- name: verify java version
+  assert:
+    that:
+      java_version | version_compare({{ vers }}, '>=')

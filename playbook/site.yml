@@ -1,0 +1,10 @@
+---
+
+- hosts: all
+  roles:
+    - debug
+
+- hosts: all
+  roles:
+    - role: java
+      vers: '1.8'
