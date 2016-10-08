@@ -2,7 +2,7 @@
 - name: get java version
   command: java -fullversion
   become: true
-  become_user: jenkins
+  become_user: "{{ user }}"
   changed_when: false
   always_run: true
   register: java_version_cmd
@@ -16,4 +16,4 @@
 - name: verify java version
   assert:
     that:
-      java_version | version_compare({{ vers }}, '>=')
+      java_version | version_compare("{{ vers }}", ">=")
