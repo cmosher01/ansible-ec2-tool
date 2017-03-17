@@ -19,8 +19,9 @@ WORKDIR $HOME
 
 COPY etc/ssh_config /etc/ssh/
 
-ADD https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.py /etc/ansible/hosts
-RUN chmod a+x /etc/ansible/hosts
+ENV ANSIBLE_HOSTS /etc/ansible/ec2.py
+ADD https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.py $ANSIBLE_HOSTS
+RUN chmod a+x $ANSIBLE_HOSTS
 
 COPY etc/ansible.cfg /etc/ansible/
 COPY etc/ec2.ini /etc/ansible/
