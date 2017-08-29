@@ -1,9 +1,9 @@
 ---
 version: '2'
 services:
-  ansible:
-    build: .
-    volumes:
-      - "$aws_cred:/root/.aws/credentials:ro"
-      - "$ec2_pkey:/root/.ssh/id_rsa:ro"
-    command: "ansible-playbook --limit=${hosts} site.yml"
+    ansible:
+        build: .
+        volumes:
+            - "$aws_cred:/root/.aws/credentials:ro"
+            - "$ec2_pkey:/root/.ssh/id_rsa:ro"
+        command: "ansible-playbook --limit=${hosts} site.yml"

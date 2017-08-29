@@ -1,9 +1,7 @@
 # Prerequisites
 
+* install make, docker, docker-compose
 * edit .env for your environment
-* make
-* docker
-* docker-compose
 
 # Running
 
@@ -11,4 +9,4 @@
 
 or
 
-`hosts=tag_environment_chocolate make`
+`make hosts=tag_environment_chocolate`
