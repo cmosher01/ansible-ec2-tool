@@ -1,17 +1,9 @@
-FROM phusion/baseimage
+FROM centos
 MAINTAINER Christopher A. Mosher <cmosher@zillion.com>
 
-RUN \
-	apt-get update && \
-	DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confdef" && \
-	apt-get autoremove && \
-	apt-get clean
-
-RUN \
-	apt-get update && \
-	DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ansible python-boto && \
-	apt-get autoremove && \
-	apt-get clean
+RUN yum update -y
+RUN yum install -y epel-release
+RUN yum install -y ansible openssh-clients python-boto
 
 ENV TERM linux
 ENV HOME /root
