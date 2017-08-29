@@ -1,4 +1,4 @@
 ---
 - name: dump instance tag Name
-    debug:
-        var: hostvars[inventory_hostname].ec2_tag_Name
+  debug:
+    var: hostvars[inventory_hostname].ec2_tag_Name
